@@ -190,14 +190,14 @@ const loadContacts = () => {
   }
 };
 
-const loadImportAndExport = () => {  
+const loadImportAndExport = () => {
   // Remove all the emojis for this feature test to succeed.
   if ('showOpenFilePicker' in window) {
     Promise.all([
       import('./import_image.mjs'),
       import('./export_image.mjs'),
     ]);
-  } else {  
+  } else {
     Promise.all([
       import('./import_image_legacy.mjs'),
       import('./export_image_legacy.mjs'),
@@ -314,11 +314,11 @@ const loadNotificationTriggers = () => {
     'File Handling': 'launchQueue' in window ?  '✅' : '❌',
     'Notification Triggers': 'Notification' in window && 'showTrigger' in Notification.prototype ?  '✅' : '❌',
   };
-  console.table(Object.keys(supported).sort().reduce((obj, key) => { 
-    obj[key] = supported[key]; 
+  console.table(Object.keys(supported).sort().reduce((obj, key) => {
+    obj[key] = supported[key];
     return obj;
-  }, 
-  {}));  
+  },
+  {}));
 })();
 
 export {

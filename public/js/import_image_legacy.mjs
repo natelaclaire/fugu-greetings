@@ -6,7 +6,7 @@ const importImage = async () => {
     input.type = 'file';
     input.accept = 'image/png, image/jpeg, image/*';
     input.addEventListener('change', () => {
-      const file = input.files[0];      
+      const file = input.files[0];
       return resolve(file);
     });
     input.click();
