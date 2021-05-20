@@ -33,7 +33,7 @@ const MEDIA_FILES = [
   './assets/fugu_greeting_card.jpg',
 ];
 
-const ALL_CACHES = [APP_SHELL_CACHE, MEDIA_CACHE];
+const ALL_CACHES = [ APP_SHELL_CACHE, MEDIA_CACHE ];
 
 self.addEventListener('install', (installEvent) => {
   installEvent.waitUntil((async () => {
@@ -65,8 +65,8 @@ self.addEventListener('fetch', (fetchEvent) => {
       const formData = await fetchEvent.request.formData();
       const image = formData.get('image');
       const keys = await caches.keys();
-      const mediaCache = await caches
-          .open(keys.filter((key) => key.startsWith('media'))[0]);
+      const mediaCache =
+          await caches.open(keys.filter((key) => key.startsWith('media'))[0]);
       await mediaCache.put('shared-image', new Response(image));
       return Response.redirect('./?share-target', 303);
     })());
@@ -74,7 +74,7 @@ self.addEventListener('fetch', (fetchEvent) => {
   /* 🐡 End Web Share Target */
 
   fetchEvent.respondWith((async () => {
-    const request = fetchEvent.request;    
+    const request = fetchEvent.request;
     return fetch(request).catch(() => caches.match(request));
   })());
 });
